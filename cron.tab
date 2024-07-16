@@ -1,0 +1,2 @@
+# min   hour    day     month   weekday command
+*     *       *       *       *       PATH="/home/appuser/venv/bin:$PATH"; cd && python main.py

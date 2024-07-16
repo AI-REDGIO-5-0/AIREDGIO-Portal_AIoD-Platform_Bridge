@@ -1,0 +1,28 @@
+{
+  "platform": "ai_redgio",
+  "platform_resource_identifier": "$/_id",
+  "name": "$/_source/title",
+  "date_published": "$/_source/properties/created",
+  "same_as": "$/_source/properties/ipsource",
+  "slogan": "$/_source/subtitle",
+  "alternate_name": [
+    "$/sort/0"
+  ],
+  "contact": "$listref/service_Contact/_source/contact",
+  "creator": [
+    "$ref/service_Owner"
+  ],
+  "description": {
+    "plain": "",
+    "html": "$/_source/description"
+  },
+  "industrial_sector": [
+    "$/_source/businesscategories"
+  ],
+  "keyword": [
+    "$/_source/hashtags"
+  ],
+  "scientific_domain": [
+    "$/_source/technicalcategories"
+  ]
+}

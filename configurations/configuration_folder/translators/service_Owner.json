@@ -1,0 +1,8 @@
+{
+    "platform": "ai_redgio",
+    "platform_resource_identifier": "$/_id$-owner",
+    "email": [
+        "$/_source/properties/owner/uid"
+    ],
+    ".type": "service_Owner"
+}

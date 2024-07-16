@@ -1,0 +1,7 @@
+{
+    "aiod_baseurl": "AIOD_URL",
+    "keycloak_server_url": "KEYCLOAK_URL",
+    "keycloak_client_id": "CLIENT_ID",
+    "keycloak_realm_name": "KEYCLOAK_REALM",
+    "keycloak_client_secret_key": "CLIENT_SECRET"
+}
