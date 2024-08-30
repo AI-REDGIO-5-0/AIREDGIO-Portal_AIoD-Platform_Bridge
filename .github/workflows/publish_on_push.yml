@@ -1,0 +1,84 @@
+name: Test bridge and ublish docker image
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  pushed_on_master:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup docker
+        run: |
+          for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+          sudo apt-get update
+          sudo apt-get install ca-certificates curl
+          sudo install -m 0755 -d /etc/apt/keyrings
+          sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+          sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+          # Add the repository to Apt sources:
+          echo \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+            $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+            sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+          sudo apt-get update
+
+          sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+          sudo usermod -aG docker $USER
+          newgrp docker
+
+      - name: Checkout bridge repository
+        uses: actions/checkout@v4
+        with:
+          repository: AI-REDGIO-5-0/AIREDGIO-Portal_AIoD-Platform_Bridge
+          ref: master
+          path: './bridge'
+  
+      - name: Checkout AIOD-rest-api
+        uses: actions/checkout@v4
+        with:
+          repository: aiondemand/AIOD-rest-api
+          path: './AIOD-rest-api'
+
+      - name: Build and run AIoD API server
+        run: |
+          mv bridge/check_publish/realm-export.json AIOD-rest-api/data/keycloak/data/import/realm-export.json
+          cd AIOD-rest-api
+          sed -i -e 's/only-if-empty/always/g' docker-compose.yaml
+          sudo chown -R 1000:1000 data
+          sudo chmod -R 775 data
+          sudo chown -R 1000:1000 logstash
+          sudo chmod -R 775 logstash
+          docker compose up --quiet-pull -d
+          cd ..
+
+      - name: Start bridge container
+        env:
+          AIREDGIO_TEST_API: ${{ secrets.AIREDGIO_TEST_API }}
+          AIOD_LOCAL_URL: ${{ secrets.AIOD_LOCAL_URL }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          KEYCLOAK_LOCAL_URL: ${{ secrets.KEYCLOAK_LOCAL_URL }}
+          KEYCLOAK_LOCAL_REALM: ${{ secrets.KEYCLOAK_LOCAL_REALM }}
+        run: |
+          cd bridge
+          bash publisher.sh
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+  
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3  
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
