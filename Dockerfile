@@ -19,6 +19,7 @@ RUN python -m pip install --no-cache-dir --upgrade --no-cache-dir pip setuptools
 RUN python -m pip install --no-cache-dir -r requirements.txt
 
 COPY --chown=$USERNAME:$USERNAME src/ ./
+COPY --chown=$USERNAME:$USERNAME check_publish/ ./check_publish
 
 # Copy the crontab using the root user
 USER root
