@@ -104,7 +104,7 @@ class MemorySQLite(Memory):
         return self._latest_date('latest_created_date')
 
     @latest_created_date.setter
-    def set_latest_created_date(self, date: datetime) -> None:
+    def latest_created_date(self, date: datetime) -> None:
         self._latest_date_setter('latest_created_date', date)
 
     @property
@@ -112,7 +112,7 @@ class MemorySQLite(Memory):
         return self._latest_date('latest_modified_date')
 
     @latest_modified_date.setter
-    def set_latest_modified_date(self, date: datetime) -> None:
+    def latest_modified_date(self, date: datetime) -> None:
         self._latest_date_setter('latest_modified_date', date)
 
     def _get_iterable_from_table(self, table: str) -> Iterable[str]:

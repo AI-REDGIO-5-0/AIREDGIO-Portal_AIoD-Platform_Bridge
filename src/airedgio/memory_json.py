@@ -68,7 +68,7 @@ class MemoryJSON(Memory):
         )
 
     @latest_created_date.setter
-    def set_latest_created_date(self, date: datetime) -> None:
+    def latest_created_date(self, date: datetime) -> None:
         date_str = date.strftime(self._timestamp_format)
         self._memory['latest']['created'] = date_str
 
@@ -80,7 +80,7 @@ class MemoryJSON(Memory):
         )
 
     @latest_modified_date.setter
-    def set_latest_modified_date(self, date: datetime) -> None:
+    def latest_modified_date(self, date: datetime) -> None:
         date_str = date.strftime(self._timestamp_format)
         self._memory['latest']['modified'] = date_str
 

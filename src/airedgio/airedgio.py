@@ -110,7 +110,7 @@ class AIRedgio:
             # Get all the assets created in a month
             created_month = self.get_created(start_date, end_date)
 
-            self.memory.set_latest_created_date = min(end_date, datetime.now())
+            self.memory.latest_created_date = min(end_date, datetime.now())
 
             yield created_month
 
@@ -170,7 +170,7 @@ class AIRedgio:
             # Get all the assets modified in a month
             modified_month = self.get_changed(start_date, end_date)
 
-            self.memory.set_latest_modified_date = min(
+            self.memory.latest_modified_date = min(
                 end_date, datetime.now())
 
             yield modified_month

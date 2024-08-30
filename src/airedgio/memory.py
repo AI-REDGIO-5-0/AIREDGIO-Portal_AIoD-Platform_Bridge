@@ -23,7 +23,7 @@ class Memory(ABC):
 
     @latest_created_date.setter
     @abstractmethod
-    def set_latest_created_date(self, date: datetime) -> None:
+    def latest_created_date(self, date: datetime) -> None:
         pass
 
     @property
@@ -33,7 +33,7 @@ class Memory(ABC):
 
     @latest_modified_date.setter
     @abstractmethod
-    def set_latest_modified_date(self, date: datetime) -> None:
+    def latest_modified_date(self, date: datetime) -> None:
         pass
 
     @property
