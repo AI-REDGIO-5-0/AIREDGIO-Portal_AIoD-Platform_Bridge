@@ -422,10 +422,12 @@ class Bridge:
 
         return success
 
-    def check_aiod_login(self) -> bool:
+    def check_aiod_login(self, access_token: str = '') -> bool:
         if not self._aiod.is_logged_in:
             logger.debug('User not logged in to AIoD, logging in...')
-            self._aiod.login()
+            if not self._aiod.login(access_token=access_token):
+                logger.warn('Could not login')
+                return False
             if not self._aiod.is_logged_in:
                 logger.warn('Could not login')
                 return False

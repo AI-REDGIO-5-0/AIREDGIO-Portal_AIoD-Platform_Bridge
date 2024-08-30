@@ -1,7 +1,9 @@
 from collections import namedtuple
-from typing import Callable
 import requests
 from keycloak import KeycloakOpenID
+import logging
+
+logger = logging.getLogger(__name__)
 
 Result = namedtuple('Result', ['success', 'value', 'reason'])
 
@@ -21,6 +23,7 @@ class AIoD:
     _keycloak_realm_name: str = ''
     _keycloak_client_secret_key: str = ''
     _keycloak_configuration: KeycloakOpenID | None = None
+    _token: dict = dict()
 
     def __init__(
         self,
@@ -63,11 +66,32 @@ class AIoD:
 
     @property
     def token(self) -> dict:
-        return self.keycloak_configuration.token(grant_type='client_credentials')
+        if not self._token:
+            logger.debug('Retrieving token from keycloak')
+            self._token = self.keycloak_configuration.token(grant_type='client_credentials')
+        return self._token
 
-    def login(self) -> None:
-        self._headers['Authorization'] = f'Bearer {self.token["access_token"]}'
-        self.session.headers.update(self._headers)
+    @property
+    def access_token(self) -> str:
+        return self.token.get('access_token', '')
+
+    @access_token.setter
+    def access_token(self, value: str) -> None:
+        # we set access_token in _token and not in token because we want to be able to bypass keycloak requesting a token and instead use the provided one directly
+        self._token['access_token'] = value
+
+    def clear_token(self) -> None:
+        self._token = dict()
+
+    def login(self, access_token: str = '') -> bool:
+        if access_token:
+            self.access_token = access_token
+        if self.access_token:
+            self._headers['Authorization'] = f'Bearer {self.access_token}'
+            self.session.headers.update(self._headers)
+            return True
+        else:
+            return False
 
     def _format_details(self, response_content: dict) -> list[str]:
         details = []
@@ -108,14 +132,21 @@ class AIoD:
             return result
 
     @property
-    def get_logged_user(self) -> dict:
+    def logged_user(self) -> dict:
         response = self.session.get(f'{self._aiod_baseurl}/authorization_test')
-        success, user, _ = self._handle_response(response)
+        success, user, reason = self._handle_response(response)
+        if not success:
+            logger.debug(
+                'Retrieve user failed. Reason: %(reason)s',
+                {
+                    'reason': reason
+                }
+            )
         return user if success else dict()
 
     @property
     def is_logged_in(self) -> bool:
-        return bool(self.get_logged_user)
+        return bool(self.logged_user)
 
     @property
     def count(self) -> Result:
@@ -141,7 +172,7 @@ class AIoD:
             self._aiod_endpoint_template.format(
                 asset_type=asset_type,
                 identifier=''
-            ),
+            ).rstrip('/'),
             json=asset
         )
         return self._handle_response(response)
@@ -187,7 +218,33 @@ class AIoD:
 
     def add_platform(self, platform: dict) -> int | None:
         asset_type = 'platforms'
-        success, result, _ = self.add_asset(asset_type, platform)
+        success, result, reason = self.add_asset(asset_type, platform)
+        if not success:
+            if isinstance(reason, list):
+                if len(reason) > 1:
+                    logger.warning('Failed to add platform. Reasons:')
+                    for r in reason:
+                        logger.debug(
+                            '%(reason)s',
+                            {
+                                'reason': r
+                            }
+                        )
+                else:
+                    logger.warning(
+                        'Failed to add platform. Reason: %(reason)s',
+                        {
+                            'reason': reason[0]
+                        }
+                    )
+            else:
+                logger.warning(
+                    'Failed to add platform. Reason: %(reason)s',
+                    {
+                        'reason': reason
+                    }
+                )
+
         return result['identifier'] if success else None
 
     def update_platform(self, platform: dict) -> int | None:
