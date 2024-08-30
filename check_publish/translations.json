@@ -1,0 +1,327 @@
+[
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-i31u-4696-4847-953169634847",
+        "name": "AI ASSET TEST OTTOBRE",
+        "date_published": "2023-10-03T15:54:36.953Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "AI ASSET TEST OTTOBRE",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>AI ASSET TEST OTTOBRE<br></p>"
+        },
+        "industrial_sector": [],
+        "keyword": [
+            ""
+        ],
+        "scientific_domain": []
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-h8e2-4696-4704-455169634704",
+        "name": "AI Asset TEST2",
+        "date_published": "2023-10-03T15:30:46.455Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "AI Asset TEST2",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>AI ASSET TEST DESCRIPTION<br></p>"
+        },
+        "industrial_sector": [],
+        "keyword": [
+            ""
+        ],
+        "scientific_domain": []
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-kcnw-4696-5228-657169635228",
+        "name": "AI_ASSET_1855",
+        "date_published": "2023-10-03T16:58:04.657Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "AI_ASSET_1855",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>AI_ASSET_1855<br></p>"
+        },
+        "industrial_sector": [],
+        "keyword": [
+            "AI_ASSET_1855"
+        ],
+        "scientific_domain": [
+            "AI services",
+            "Audio processing"
+        ]
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-u9h9-4696-2939-431169642939",
+        "name": "Artificial intelligence in the wealth management",
+        "date_published": "2023-10-04T14:23:18.431Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "Artificial intelligence in the wealth management",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>Artificial intelligence in the wealth management description<br></p>"
+        },
+        "industrial_sector": [],
+        "keyword": [
+            ""
+        ],
+        "scientific_domain": []
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-vehm-4696-3131-806169643131",
+        "name": "Prototyping",
+        "date_published": "2023-10-04T14:55:11.806Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "Prototyping",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>Prototyping Prototyping</p>"
+        },
+        "industrial_sector": [
+            "Cultural Heritage",
+            "Earth Observation"
+        ],
+        "keyword": [
+            "Prototyping"
+        ],
+        "scientific_domain": [
+            "AI ethics",
+            "AI services"
+        ]
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-tpat-4696-2845-982169642845",
+        "name": "Test GA",
+        "date_published": "2023-10-04T14:07:36.982Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "Test GA",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>Test GA<br></p>"
+        },
+        "industrial_sector": [
+            "Healthcare",
+            "Manufacturing"
+        ],
+        "keyword": [
+            "test1"
+        ],
+        "scientific_domain": [
+            "AI ethics",
+            "AI services"
+        ]
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-jncj-4696-5110-548169635110",
+        "name": "VM TEST",
+        "date_published": "2023-10-03T16:38:23.548Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "VM TEST",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>VM TEST<br></p>"
+        },
+        "industrial_sector": [
+            "Agriculture"
+        ],
+        "keyword": [
+            "VMTEST"
+        ],
+        "scientific_domain": [
+            "AI ethics"
+        ]
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-juoq-4696-5144-947169635144",
+        "name": "VMTEST_1841",
+        "date_published": "2023-10-03T16:44:05.947Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "VMTEST_1841",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>VMTEST_1841<br></p>"
+        },
+        "industrial_sector": [
+            "Agriculture"
+        ],
+        "keyword": [
+            "VMTEST_1841"
+        ],
+        "scientific_domain": [
+            "AI ethics"
+        ]
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-2wmo-4697-0904-402169710904",
+        "name": "notify via email",
+        "date_published": "2023-10-12T11:10:43.402Z",
+        "same_as": "http://195.201.83.104/addentity",
+        "slogan": "notify via email",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "notify via email"
+        },
+        "industrial_sector": [],
+        "keyword": [
+            ""
+        ],
+        "scientific_domain": [
+            "AI ethics",
+            "AI services"
+        ]
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-ueux-4696-2964-442169642964",
+        "name": "test1",
+        "date_published": "2023-10-04T14:27:29.442Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "test1",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>test1<br></p>"
+        },
+        "industrial_sector": [
+            "Cloud, Edge and Infrastructure",
+            "Cultural Heritage"
+        ],
+        "keyword": [
+            ""
+        ],
+        "scientific_domain": [
+            "Audio processing"
+        ]
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-uy5b-4696-3054-369169643054",
+        "name": "test2",
+        "date_published": "2023-10-04T14:42:29.369Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "test2",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>test2<br></p>"
+        },
+        "industrial_sector": [
+            "Maritime Sector",
+            "Regional Engagement - DIHs"
+        ],
+        "keyword": [
+            "test2"
+        ],
+        "scientific_domain": [
+            "AI services",
+            "Audio processing"
+        ]
+    },
+    {
+        ".reference": {
+            "contact/0": "$ref/service_Contact/0",
+            "creator/0": "$ref/service_Owner"
+        },
+        "platform": "ai_redgio",
+        "platform_resource_identifier": "vmtestln-i0bo-4696-4834-735169634834",
+        "name": "test3",
+        "date_published": "2023-10-03T15:52:29.735Z",
+        "same_as": "http://195.201.83.104:8081/",
+        "slogan": "test3",
+        "alternate_name": [],
+        "contact": [],
+        "creator": [],
+        "description": {
+            "plain": "",
+            "html": "<p>test3<br></p>"
+        },
+        "industrial_sector": [],
+        "keyword": [
+            ""
+        ],
+        "scientific_domain": []
+    }
+]

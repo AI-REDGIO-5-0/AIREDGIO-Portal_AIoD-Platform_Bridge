@@ -1,0 +1,1171 @@
+[
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-i31u-4696-4847-953169634847",
+        "_score": null,
+        "_source": {
+            "title": "AI ASSET TEST OTTOBRE",
+            "subtitle": "AI ASSET TEST OTTOBRE",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>AI ASSET TEST OTTOBRE<br></p>",
+            "hashtags": [
+                ""
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "AI ASSET TEST OTTOBRE",
+            "gdpr": "AI ASSET TEST OTTOBRE",
+            "contact": [
+                {
+                    "namesurname": "AI ASSET TEST OTTOBRE"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-03T15:54:36.953Z",
+                "changed": "2023-10-03T15:54:36.953Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            }
+        },
+        "sort": [
+            "AI ASSET TEST OTTOBRE"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-h8e2-4696-4704-455169634704",
+        "_score": null,
+        "_source": {
+            "title": "AI Asset TEST2",
+            "subtitle": "AI Asset TEST2",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>AI ASSET TEST DESCRIPTION<br></p>",
+            "hashtags": [
+                ""
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "test",
+            "gdpr": "test",
+            "contact": [
+                {
+                    "namesurname": "Francesco Stefanelli"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-03T15:30:46.455Z",
+                "changed": "2023-10-03T15:42:48.305Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "test@liferay.com",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            }
+        },
+        "sort": [
+            "AI Asset TEST2"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-kcnw-4696-5228-657169635228",
+        "_score": null,
+        "_source": {
+            "title": "AI_ASSET_1855",
+            "subtitle": "AI_ASSET_1855",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>AI_ASSET_1855<br></p>",
+            "hashtags": [
+                "AI_ASSET_1855"
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "AI_ASSET_1855",
+            "gdpr": "AI_ASSET_1855",
+            "contact": [
+                {
+                    "namesurname": "Francesco Stefanelli"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-03T16:58:04.657Z",
+                "changed": "2023-10-03T16:58:04.657Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            },
+            "technicalcategories": [
+                "AI services",
+                "Audio processing"
+            ],
+            "researcherares": [
+                ""
+            ],
+            "visibilitylevel": [
+                "vislevel3"
+            ]
+        },
+        "sort": [
+            "AI_ASSET_1855"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-u9h9-4696-2939-431169642939",
+        "_score": null,
+        "_source": {
+            "title": "Artificial intelligence in the wealth management",
+            "subtitle": "Artificial intelligence in the wealth management",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>Artificial intelligence in the wealth management description<br></p>",
+            "hashtags": [
+                ""
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "Artificial intelligence in the wealth management t AI",
+            "gdpr": "Artificial intelligence in the wealth management GDPR",
+            "contact": [
+                {
+                    "namesurname": "Francesco Stefanelli"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-04T14:23:18.431Z",
+                "changed": "2023-10-04T14:23:18.431Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            },
+            "visibilitylevel": [
+                "vislevel3"
+            ]
+        },
+        "sort": [
+            "Artificial intelligence in the wealth management"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-vehm-4696-3131-806169643131",
+        "_score": null,
+        "_source": {
+            "title": "Prototyping",
+            "subtitle": "Prototyping",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>Prototyping Prototyping</p>",
+            "hashtags": [
+                "Prototyping"
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "Prototyping",
+            "gdpr": "Prototyping",
+            "contact": [
+                {
+                    "namesurname": "Prototyping"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-04T14:55:11.806Z",
+                "changed": "2023-10-04T14:55:11.806Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            },
+            "technicalcategories": [
+                "AI ethics",
+                "AI services"
+            ],
+            "businesscategories": [
+                "Cultural Heritage",
+                "Earth Observation"
+            ],
+            "visibilitylevel": [
+                "vislevel3"
+            ]
+        },
+        "sort": [
+            "Prototyping"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-tpat-4696-2845-982169642845",
+        "_score": null,
+        "_source": {
+            "title": "Test GA",
+            "subtitle": "Test GA",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>Test GA<br></p>",
+            "hashtags": [
+                "test1"
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "Test GA",
+            "gdpr": "Test GA",
+            "contact": [
+                {
+                    "namesurname": "Francesco Stefanelli"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-04T14:07:36.982Z",
+                "changed": "2023-10-04T14:07:36.982Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            },
+            "technicalcategories": [
+                "AI ethics",
+                "AI services"
+            ],
+            "researcherares": [
+                ""
+            ],
+            "businesscategories": [
+                "Healthcare",
+                "Manufacturing"
+            ],
+            "visibilitylevel": [
+                "vislevel3"
+            ]
+        },
+        "sort": [
+            "Test GA"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-jncj-4696-5110-548169635110",
+        "_score": null,
+        "_source": {
+            "title": "VM TEST",
+            "subtitle": "VM TEST",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "VM TEST",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>VM TEST<br></p>",
+            "hashtags": [
+                "VMTEST"
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "VM TEST",
+            "gdpr": "VM TEST",
+            "contact": [
+                {
+                    "namesurname": "Francesco Stefanelli"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-03T16:38:23.548Z",
+                "changed": "2023-10-03T16:38:23.548Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            },
+            "license": [
+                "3-clause BSD license (BSD-3-Clause)"
+            ],
+            "technicalcategories": [
+                "AI ethics"
+            ],
+            "researcherares": [
+                ""
+            ],
+            "businesscategories": [
+                "Agriculture"
+            ],
+            "visibilitylevel": [
+                "vislevel3"
+            ]
+        },
+        "sort": [
+            "VM TEST"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-juoq-4696-5144-947169635144",
+        "_score": null,
+        "_source": {
+            "title": "VMTEST_1841",
+            "subtitle": "VMTEST_1841",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>VMTEST_1841<br></p>",
+            "hashtags": [
+                "VMTEST_1841"
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "VMTEST_1841",
+            "gdpr": "VMTEST_1841",
+            "contact": [
+                {
+                    "namesurname": "Francesco Stefanelli"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-03T16:44:05.947Z",
+                "changed": "2023-10-03T16:44:05.947Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            },
+            "license": [
+                "3-clause BSD license (BSD-3-Clause)"
+            ],
+            "technicalcategories": [
+                "AI ethics"
+            ],
+            "researcherares": [
+                ""
+            ],
+            "businesscategories": [
+                "Agriculture"
+            ],
+            "visibilitylevel": [
+                "vislevel3"
+            ]
+        },
+        "sort": [
+            "VMTEST_1841"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-2wmo-4697-0904-402169710904",
+        "_score": null,
+        "_source": {
+            "title": "notify via email",
+            "subtitle": "notify via email",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "notify via email",
+            "hashtags": [
+                ""
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "notify via email",
+            "gdpr": "notify via email",
+            "contact": [
+                {
+                    "namesurname": "francesco stefanelli"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "owner": {
+                    "uid": "admin@dymer.it",
+                    "gid": "1"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-12T11:10:43.402Z",
+                "changed": "2023-10-12T11:10:43.402Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "admin@dymer.it",
+                        "origin": "http://195.201.83.104/addentity"
+                    }
+                },
+                "ipsource": "http://195.201.83.104/addentity"
+            },
+            "license": [
+                "3-clause BSD license (BSD-3-Clause)",
+                "Creative Commons Attribution 4.0"
+            ],
+            "technicalcategories": [
+                "AI ethics",
+                "AI services"
+            ],
+            "visibilitylevel": [
+                "vislevel2"
+            ]
+        },
+        "sort": [
+            "notify via email"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-ueux-4696-2964-442169642964",
+        "_score": null,
+        "_source": {
+            "title": "test1",
+            "subtitle": "test1",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>test1<br></p>",
+            "hashtags": [
+                ""
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "test1",
+            "gdpr": "test1",
+            "contact": [
+                {
+                    "namesurname": "ff"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-04T14:27:29.442Z",
+                "changed": "2023-10-04T14:27:29.442Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            },
+            "license": [
+                "3-clause BSD license (BSD-3-Clause)"
+            ],
+            "technicalcategories": [
+                "Audio processing"
+            ],
+            "researcherares": [
+                ""
+            ],
+            "businesscategories": [
+                "Cloud, Edge and Infrastructure",
+                "Cultural Heritage"
+            ],
+            "visibilitylevel": [
+                "vislevel3"
+            ]
+        },
+        "sort": [
+            "test1"
+        ],
+        "relations": [
+            {
+                "_index": "testmodel",
+                "_type": "testmodel",
+                "_id": "vmtestlb-mtud-4669-9319-692166999319",
+                "_score": 1,
+                "_source": {
+                    "title": "test model 1",
+                    "description": "test model 1",
+                    "properties": {
+                        "status": "1",
+                        "visibility": "0",
+                        "grant": {
+                            "update": {
+                                "uid": [
+                                    ""
+                                ],
+                                "gid": [
+                                    ""
+                                ]
+                            },
+                            "delete": {
+                                "uid": [
+                                    ""
+                                ],
+                                "gid": [
+                                    ""
+                                ]
+                            },
+                            "managegrant": {
+                                "uid": [
+                                    ""
+                                ],
+                                "gid": [
+                                    ""
+                                ]
+                            }
+                        },
+                        "owner": {
+                            "uid": "admin@dymer.it",
+                            "gid": "1"
+                        },
+                        "lang": "und",
+                        "tid": "0",
+                        "created": "2022-12-02T14:59:52.692Z",
+                        "changed": "2022-12-02T14:59:52.692Z",
+                        "extrainfo": {
+                            "lastupdate": {
+                                "uid": "admin@dymer.it"
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-uy5b-4696-3054-369169643054",
+        "_score": null,
+        "_source": {
+            "title": "test2",
+            "subtitle": "test2",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>test2<br></p>",
+            "hashtags": [
+                "test2"
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "test2",
+            "gdpr": "test2",
+            "contact": [
+                {
+                    "namesurname": "test2"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-04T14:42:29.369Z",
+                "changed": "2023-10-04T14:42:29.369Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            },
+            "technicalcategories": [
+                "AI services",
+                "Audio processing"
+            ],
+            "researcherares": [
+                ""
+            ],
+            "businesscategories": [
+                "Maritime Sector",
+                "Regional Engagement - DIHs"
+            ],
+            "visibilitylevel": [
+                "vislevel3"
+            ]
+        },
+        "sort": [
+            "test2"
+        ],
+        "relations": []
+    },
+    {
+        "_index": "aiasset",
+        "_type": "aiasset",
+        "_id": "vmtestln-i0bo-4696-4834-735169634834",
+        "_score": null,
+        "_source": {
+            "title": "test3",
+            "subtitle": "test3",
+            "aitype": "As a Service",
+            "additionalmaterial": [
+                {
+                    "label": "",
+                    "url": ""
+                }
+            ],
+            "devby": {
+                "label": "",
+                "url": ""
+            },
+            "description": "<p>test3<br></p>",
+            "hashtags": [
+                ""
+            ],
+            "documents": [
+                {
+                    "label": ""
+                }
+            ],
+            "trustworthyai": "test",
+            "gdpr": "test",
+            "contact": [
+                {
+                    "namesurname": "Franco Stefanelli"
+                }
+            ],
+            "properties": {
+                "status": "1",
+                "visibility": "0",
+                "grant": {
+                    "update": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "delete": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    },
+                    "managegrant": {
+                        "uid": [
+                            ""
+                        ],
+                        "gid": [
+                            ""
+                        ]
+                    }
+                },
+                "owner": {
+                    "uid": "francesco.stefanelli@eng.it",
+                    "gid": "20121"
+                },
+                "lang": "und",
+                "tid": "0",
+                "created": "2023-10-03T15:52:29.735Z",
+                "changed": "2023-10-03T15:52:29.735Z",
+                "extrainfo": {
+                    "lastupdate": {
+                        "uid": "francesco.stefanelli@eng.it",
+                        "origin": "http://195.201.83.104:8081/"
+                    }
+                },
+                "ipsource": "http://195.201.83.104:8081/"
+            }
+        },
+        "sort": [
+            "test3"
+        ],
+        "relations": []
+    }
+]
