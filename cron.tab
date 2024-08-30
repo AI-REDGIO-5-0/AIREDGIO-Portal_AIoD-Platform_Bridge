@@ -1,2 +1,2 @@
-# min   hour    day     month   weekday command
-*     *       *       *       *       PATH="/home/appuser/venv/bin:$PATH"; cd && python main.py
+#min    hour    day     month   weekday     command
+0       0,12    *       *       *           PATH="/home/appuser/venv/bin:$PATH"; python -c 'import random; import time; time.sleep(random.random() * 3600)' cd && python main.py
