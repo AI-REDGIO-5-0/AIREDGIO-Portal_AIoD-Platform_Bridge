@@ -81,7 +81,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
           tags: latest
 
       - name: Build and push
