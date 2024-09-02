@@ -131,18 +131,41 @@ class AIoD:
         finally:
             return result
 
+    def _log_request_result(self, result: Result, method: str, asset_type: str) -> None:
+        if result.success:
+            logger.debug(
+                'Successfully performed %(method)s request for %(asset_type)s',
+                {
+                    'method': method,
+                    'asset_type': asset_type,
+                }
+            )
+        else:
+            logger.warning(
+                'Failed to %(method)s %(asset_type)s',
+                {
+                    'method': method,
+                    'asset_type': asset_type,
+                }
+            )
+            reasons = [result.reason] if isinstance(
+                result.reason, str) else result.reason
+            for reason in reasons:
+                logger.debug(
+                    'Failed to %(method)s %(asset_type)s. Reason: %(reason)s',
+                    {
+                        'method': method,
+                        'asset_type': asset_type,
+                        'reason': reason,
+                    }
+                )
+
     @property
     def logged_user(self) -> dict:
         response = self.session.get(f'{self._aiod_baseurl}/authorization_test')
-        success, user, reason = self._handle_response(response)
-        if not success:
-            logger.debug(
-                'Retrieve user failed. Reason: %(reason)s',
-                {
-                    'reason': reason
-                }
-            )
-        return user if success else dict()
+        result = self._handle_response(response)
+        self._log_request_result(result, 'GET', 'user')
+        return result.value if result.success else dict()
 
     @property
     def is_logged_in(self) -> bool:
@@ -165,7 +188,9 @@ class AIoD:
                 identifier=id
             )
         )
-        return self._handle_response(response)
+        result = self._handle_response(response)
+        self._log_request_result(result, 'POST', asset_type)
+        return result
 
     def add_asset(self, asset_type: str, asset: dict) -> Result:
         response = self.session.post(
@@ -175,7 +200,9 @@ class AIoD:
             ).rstrip('/'),
             json=asset
         )
-        return self._handle_response(response)
+        result = self._handle_response(response)
+        self._log_request_result(result, 'POST', asset_type)
+        return result
 
     def get_asset_from_platform(
         self,
@@ -190,7 +217,9 @@ class AIoD:
                 platform_resource_identifier=platform_resource_identifier
             )
         )
-        return self._handle_response(response)
+        result = self._handle_response(response)
+        self._log_request_result(result, 'POST', asset_type)
+        return result
 
     def update_asset(self, asset_type, asset: dict) -> Result:
         response = self.session.put(
@@ -200,7 +229,9 @@ class AIoD:
             ),
             json=asset
         )
-        return self._handle_response(response)
+        result = self._handle_response(response)
+        self._log_request_result(result, 'POST', asset_type)
+        return result
 
     def delete_asset(self, id: int, asset_type: str) -> Result:
         response = self.session.delete(
@@ -209,7 +240,9 @@ class AIoD:
                 identifier=id
             )
         )
-        return self._handle_response(response)
+        result = self._handle_response(response)
+        self._log_request_result(result, 'POST', asset_type)
+        return result
 
     def get_platform(self, id: int) -> dict:
         asset_type = 'platforms'
@@ -219,32 +252,6 @@ class AIoD:
     def add_platform(self, platform: dict) -> int | None:
         asset_type = 'platforms'
         success, result, reason = self.add_asset(asset_type, platform)
-        if not success:
-            if isinstance(reason, list):
-                if len(reason) > 1:
-                    logger.warning('Failed to add platform. Reasons:')
-                    for r in reason:
-                        logger.debug(
-                            '%(reason)s',
-                            {
-                                'reason': r
-                            }
-                        )
-                else:
-                    logger.warning(
-                        'Failed to add platform. Reason: %(reason)s',
-                        {
-                            'reason': reason[0]
-                        }
-                    )
-            else:
-                logger.warning(
-                    'Failed to add platform. Reason: %(reason)s',
-                    {
-                        'reason': reason
-                    }
-                )
-
         return result['identifier'] if success else None
 
     def update_platform(self, platform: dict) -> int | None:
