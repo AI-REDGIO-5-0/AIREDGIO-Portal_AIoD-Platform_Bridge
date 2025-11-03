@@ -3,3 +3,4 @@ venv/
 *.log
 gitignore_*
 __pycache__/
+*.sqlite3

@@ -1,2 +1,4 @@
 python-keycloak
 requests
+fastapi[standard]
+pydantic-settings

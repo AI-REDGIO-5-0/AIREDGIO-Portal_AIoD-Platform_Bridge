@@ -4,13 +4,13 @@ set -e
 
 [ -r .env ] && . .env
 
-docker buildx build -t bridge .
+docker buildx build -t aiod_bridge .
 [ $? -ne 0 ] && exit 1
 docker run \
   -v $(pwd)/configurations:/home/appuser/configurations:ro \
   -v $(pwd)/memory:/home/appuser/memory \
   --network=host \
-  bridge python check_publish.py \
+  aiod_bridge python check_publish.py \
   --airedgio_endpoint "$AIREDGIO_TEST_API" \
   --aiod_url "$AIOD_LOCAL_URL" \
   --client_id "$CLIENT_ID" \
