@@ -1,0 +1,6 @@
+{
+    "platform": "ai_redgio",
+    "platform_resource_identifier": "$/_source/contacts/i/name",
+    "name": "$/_source/contacts/i/name",
+    ".type": "service_Contact"
+}

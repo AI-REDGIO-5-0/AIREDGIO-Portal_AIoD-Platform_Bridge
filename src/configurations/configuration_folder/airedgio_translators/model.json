@@ -1,0 +1,17 @@
+{
+  "platform": "ai_redgio",
+  "platform_resource_identifier": "$/id",
+  "name": "$/title",
+  "same_as": "$/s3Path",
+  "application_area": "$/businessCategory",
+  "contact": ["$ref/model_Contact/contactDetails"],
+  "description": {
+    "plain": "",
+    "html": "$/detailedDescription"
+  },
+  "industrial_sector": "$/technicalCategory",
+  "keyword": "$/keywords",
+  "license": "$/license",
+  "relevant_link": ["$/s3Path"],
+  "research_area": "$/researchArea"
+}

@@ -1,0 +1,8 @@
+{
+    "as_a_service": "services",
+    "service": "services",
+    "service_Contact": "contacts",
+    "service_Owner": "contacts",
+    "model_Contact": "contacts",
+    "model": "ml_models"
+}
