@@ -1,4 +1,3 @@
-# Stage 1: Build
 FROM python:3-alpine
 
 # Set environment variables
@@ -18,6 +17,7 @@ WORKDIR $APP_PATH
 RUN apk update
 RUN apk upgrade
 # RUN apk add --no-cache cargo rust gcc python3-dev musl-dev linux-headers make g++
+RUN apk add --no-cache rust
 RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 RUN python -m pip install --upgrade pip setuptools wheel
