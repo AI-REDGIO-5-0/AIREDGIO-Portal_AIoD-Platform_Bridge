@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Iterable
 import sqlite3
 
-from airedgio.memory import Memory
+from memory.memory import Memory
 
 
 class MemorySQLite(Memory):

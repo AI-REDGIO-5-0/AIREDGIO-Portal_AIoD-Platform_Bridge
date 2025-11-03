@@ -3,7 +3,7 @@ import json
 import os
 from typing import Iterable
 
-from airedgio.memory import Memory
+from memory.memory import Memory
 
 
 class MemoryJSON(Memory):

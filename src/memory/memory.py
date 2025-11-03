@@ -66,10 +66,10 @@ class Memory(ABC):
     @classmethod
     def memory_factory(cls, connection_string: str, *args):
         if connection_string.startswith('json:'):
-            from airedgio.memory_json import MemoryJSON
+            from memory.memory_json import MemoryJSON
             return MemoryJSON(connection_string, *args)
         elif connection_string.startswith('sqlite:'):
-            from airedgio.memory_sqlite import MemorySQLite
+            from memory.memory_sqlite import MemorySQLite
             return MemorySQLite(connection_string, *args)
         else:
             raise ValueError('Could not infer type from connection string')
