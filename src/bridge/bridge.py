@@ -1,9 +1,11 @@
-from itertools import islice
 import json
 import os
+import traceback
 from aiod.aiod import AIoD
 from bridge.platform import Platform
 from logging import getLogger
+
+from bridge.platform_converter import PlatformConverter
 
 logger = getLogger(__name__)
 
@@ -14,11 +16,13 @@ class Bridge:
     _timestamp_format = '%Y-%m-%dT%H:%M:%S.%fZ'
     _type_to_aiod_endpoint: dict
     _platform: Platform
+    _platform_converters: dict[str, PlatformConverter]
 
     def __init__(
         self,
         configuration_folder: str,
         aiod: AIoD,
+        platform_converters: list[PlatformConverter] = []
     ) -> None:
         if not os.path.isdir(configuration_folder):
             raise FileNotFoundError(
@@ -34,6 +38,8 @@ class Bridge:
             platform = json.load(fin)
         self._platform = Platform(self._aiod, platform)
 
+        self._platform_converters = {p.name: p for p in platform_converters}
+
     @property
     def platform(self) -> Platform:
         return self._platform
@@ -43,157 +49,6 @@ class Bridge:
 
     def check_platform(self) -> bool:
         return self.platform.check_platform()
-
-    def _translate(
-        self,
-        instance: dict,
-        created: dict,
-        translator: dict = {},
-        translator_type: str = '',
-        index: int | None = None
-    ) -> dict:
-
-        # Either use the provided translator JSON or open a translator file based on the type
-        if not translator:
-            filepath = f'{self._configuration_folder}/translators/{translator_type}.json'
-            if not os.path.isfile(filepath):
-                logger.warning(
-                    'Translation file "%(translator_filepath)s" not found'
-                )
-                return dict()
-            with open(filepath, 'r') as fin:
-                translator = json.load(fin)
-
-        # 'translation' is the resulting AIoD JSON asset
-        translation: dict[str, int | str | dict | list] = {}
-        # 'translation['.reference']' holds the keys to other assets that need to be referenced inside 'translation'
-        translation['.reference'] = dict()
-        for key, value in translator.items():
-            match value:
-                case int():
-                    translation[key] = value
-                case str() if not value.startswith('$'):
-                    translation[key] = value
-                case str() if value.startswith('$/'):
-                    # The value represents a path in the AI REDGIO JSON to the wanted value
-                    # TODO: instead of just path + append, allow something like {path + append} * n
-                    splits = value.split('$', 2)
-                    path = splits[1]
-                    append = splits[2:] if len(splits) > 2 else ''
-                    current_value = instance
-                    # Follow the path
-                    for k in islice(path.split('/'), 1, None):
-                        if isinstance(current_value, dict):
-                            if k in current_value:
-                                current_value = current_value[k]
-                            else:
-                                break
-                        elif isinstance(current_value, list):
-                            if k.isdigit() and len(current_value) > int(k):
-                                current_value = current_value[int(k)]
-                            elif k == 'i' and index != None and len(current_value) > index:
-                                current_value = current_value[index]
-                            else:
-                                break
-                        else:
-                            break
-                    else:
-                        # Only use 'current_value' if the for-loop executed till the end (meaning the path was found)
-                        if isinstance(current_value, str):
-                            # Can only append to str
-                            translation[key] = f'{current_value}{append}'
-                        else:
-                            translation[key] = current_value
-                case str() if value.startswith('$ref'):
-                    # The value represents a different object that must be created and this 'translation' will only hold a reference identifier to it, not the object itself
-                    if index != None:
-                        value = f'{value}/{index}'
-                    if value in created:
-                        # If it's already been created, reference that one
-                        translation['.reference'][key] = value
-                    else:
-                        # Recursively create the referenced object
-                        created[value] = None
-                        res = self._translate(
-                            instance,
-                            created,
-                            translator_type=value.split('/')[1],
-                            index=index
-                        )
-                        created[value] = res
-                        translation['.reference'][key] = value
-                case str() if value.startswith('$listref'):
-                    # Replace the list with a list of referenced objects
-                    splits = value.split('/')
-                    t = splits[1]
-                    current_value = instance
-                    for k in islice(splits, 2, None):
-                        if isinstance(current_value, dict) and k in current_value:
-                            current_value = current_value[k]
-                        elif isinstance(current_value, list):
-                            if k.isdigit() and len(current_value) > int(k):
-                                current_value = current_value[int(k)]
-                            else:
-                                break
-                        else:
-                            break
-                    else:
-                        translation[key] = list()
-
-                        # For each element in the list, apply the same behaviour as with the values starting with '$ref'
-                        # Pass 'i' as the index
-                        for i in range(len(current_value)):
-                            value = f'$ref/{splits[1]}/{i}'
-                            if value in created:
-                                translation['.reference'][key] = value
-                            else:
-                                created[value] = None
-                                res = self._translate(
-                                    instance,
-                                    created,
-                                    translator_type=t,
-                                    index=i
-                                )
-                                created[value] = res
-                                translation['.reference'][f'{key}/{i}'] = value
-                case dict():
-                    # Recursively translate each dictionary
-                    res = self._translate(instance, created, value)
-                    translation[key] = res
-                    # Merge the references in the inner dict with the ones of 'translation'
-                    refs = res.pop('.reference', {})
-                    for k, v in refs.items():
-                        translation['.reference'][f'{key}/{k}'] = v
-                case list():
-                    res = self._translate(
-                        instance,
-                        created,
-                        {k: v for k, v in enumerate(value)}
-                    )
-                    refs = res.pop('.reference', {})
-                    res = [x for sublist in res.values() if isinstance(
-                        sublist, list) for x in sublist]
-                    for k, v in refs.items():
-                        translation['.reference'][f'{key}/{k}'] = v
-                    translation[key] = list(res)
-
-        return translation
-
-    def translate(
-        self,
-        instance: dict,
-        translator_type: str,
-    ) -> dict:
-        created = dict()
-        translated = self._translate(
-            instance,
-            created,
-            translator_type=translator_type
-        )
-        if not translated:
-            return dict()
-        created[f'/{translator_type}'] = translated
-        return created
 
     def merge(self, new: dict, old: dict) -> dict:
         result = json.loads(json.dumps(new))
@@ -214,7 +69,8 @@ class Bridge:
     def post_and_put(self, entity_key: str, entity: dict) -> dict:
 
         # Find the AIoD endpoint matching the AI REDGIO type
-        asset_type = entity_key.split('/')[1]
+        key_split = entity_key.split('/')
+        asset_type = key_split[1] if len(key_split) > 1 else key_split[0]
         aiod_type = self.aiod_endpoint_from_type(asset_type)
         if not aiod_type:
             logger.warning(
@@ -231,9 +87,10 @@ class Bridge:
             entity['identifier'] = content['identifier']
         else:
             logger.info(
-                'Could not upload asset %(asset_id)s',
+                'Could not upload asset %(asset_id)s as AIoD type %(aiod_type)s',
                 {
-                    'asset_id': entity['platform_resource_identifier']
+                    'asset_id': entity['platform_resource_identifier'] if 'platform_resource_type' in entity else 'None',
+                    'aiod_type': aiod_type,
                 }
             )
             try:
@@ -249,15 +106,19 @@ class Bridge:
                     pos = first_id.find(marker)
                     if pos != -1:
                         first_id = first_id[pos+len(marker):]
-                        for i, char in enumerate(first_id):
-                            if not char.isdigit():
-                                break
+                        i = next(
+                            filter(
+                                lambda c: not c[1].isdigit(),
+                                enumerate(first_id)
+                            ),
+                            (len(first_id), 'a')
+                        )[0]
                         first_id = first_id[:i]
                         first_id = int(first_id)
                         logger.info(
                             'Asset %(asset_id)s already uploaded with identifier %(asset_identifier)d, trying to solve conflict...',
                             {
-                                'asset_id': entity['platform_resource_identifier'],
+                                'asset_id': entity['platform_resource_identifier'] if 'platform_resource_type' in entity else 'None',
                                 'asset_identifier': first_id
                             }
                         )
@@ -276,7 +137,7 @@ class Bridge:
                             logger.warning(
                                 'Could not PUT asset %(asset_id)s with identifier %(asset_identifier)d',
                                 {
-                                    'asset_id': entity['platform_resource_identifier'],
+                                    'asset_id': entity['platform_resource_identifier'] if 'platform_resource_type' in entity else 'None',
                                     'asset_identifier': first_id
                                 }
                             )
@@ -285,20 +146,30 @@ class Bridge:
                         logger.info(
                             'Asset %(asset_id)s: %(upload_error)s',
                             {
-                                'asset_id': entity['platform_resource_identifier'],
+                                'asset_id': entity['platform_resource_identifier'] if 'platform_resource_type' in entity else 'None',
                                 'upload_error': d
                             }
                         )
 
+            # except Exception as ex:
+            #     logger.warning(
+            #         'Error with asset %(asset_id)s: %(error_message)s',
+            #         {
+            #             'asset_id': entity['platform_resource_identifier'] if 'platform_resource_type' in entity else 'None',
+            #             'error_message': repr(ex)
+            #         }
+            #     )
             except Exception as ex:
+                # Capture the traceback
+                tb_str = traceback.format_exc()
                 logger.warning(
-                    'Error with asset %(asset_id)s: %(error_message)s',
+                    'Error with asset %(asset_id)s: %(error_message)s\nTraceback: %(traceback_info)s',
                     {
-                        'asset_id': entity['platform_resource_identifier'],
-                        'error_message': repr(ex)
+                        'asset_id': entity['platform_resource_identifier'] if 'platform_resource_type' in entity else 'None',
+                        'error_message': repr(ex),
+                        'traceback_info': tb_str
                     }
                 )
-
         return entity
 
     def upload(self, created: dict, entity_key: str) -> dict:
@@ -308,8 +179,8 @@ class Bridge:
             created['.failed'] = {}
         created['.failed'][entity_key] = set()
 
-        current_entity = created[entity_key]
-
+        current_entity = created[entity_key if entity_key.startswith(
+            '$') else f'{entity_key}']
         if entity_key in created['.visited']:
             return current_entity
         created['.visited'].add(entity_key)
@@ -348,23 +219,39 @@ class Bridge:
             self.post_and_put(entity_key, current_entity)
         return current_entity
 
-    def convert_asset(self, asset: dict, asset_type: str) -> bool:
+    def convert_asset(self, asset: dict, asset_type: str) -> str:
 
         # Translate a JSON asset into AIoD format
-        created = self.translate(asset, translator_type=asset_type)
+        converter = next(
+            filter(
+                lambda x: x.can_handle(asset_type),
+                self._platform_converters.values()
+            ),
+            None
+        )
+        if not converter:
+            logger.warning(
+                'Could not find a converter for type %(asset_type)',
+                {
+                    'asset_type': asset_type,
+                }
+            )
+            return ''
+        asset_id = converter.get_asset_id(asset)
+        created = converter.translate(asset, translator_type=asset_type)
         if not created:
             logger.warning(
                 'Failed to translate asset %(asset_id)s',
                 {
-                    'asset_id': asset['_id']
+                    'asset_id': asset_id
                 }
             )
-            return False
+            return ''
 
         logger.debug(
             'Successfully translated asset %(asset_id)s',
             {
-                'asset_id': asset['_id']
+                'asset_id': asset_id
             }
         )
 
@@ -376,28 +263,28 @@ class Bridge:
             logger.warning(
                 'Failed to upload asset %(asset_id)s',
                 {
-                    'asset_id': asset['_id']
+                    'asset_id': asset_id
                 }
             )
 
             # TODO: Delete from AIoD all related entities if this failed (what if other assets reference one of these related?)
-            return False
+            return ''
 
         logger.info(
             'Successfully uploaded asset %(asset_id)s with id %(asset_identifier)d',
             {
-                'asset_id': asset['_id'],
+                'asset_id': asset_id,
                 'asset_identifier': uploaded['identifier']
             }
         )
 
-        return True
+        return uploaded['identifier']
 
     def delete_asset(self, asset_id: str, asset_type: str) -> bool:
         success, asset, reasons = self._aiod.get_asset_from_platform(
             self.platform.name, asset_type, asset_id)
         if not success:
-            logger.warn(
+            logger.warning(
                 'Could not find asset %(asset_id)d by platform "%(platform_name)s on AIoD',
                 {
                     'asset_id': asset_id,
@@ -410,7 +297,7 @@ class Bridge:
         identifier = asset['identifier']
         success, _, reasons = self._aiod.delete_asset(identifier, asset_type)
         if not success:
-            logger.warn(
+            logger.warning(
                 'Could not delete asset %(asset_id)d with identifier %(identifier) from AIoD',
                 {
                     'asset_id': asset_id,
@@ -426,10 +313,44 @@ class Bridge:
         if not self._aiod.is_logged_in:
             logger.debug('User not logged in to AIoD, logging in...')
             if not self._aiod.login(access_token=access_token):
-                logger.warn('Could not login')
+                logger.warning('Could not login')
                 return False
             if not self._aiod.is_logged_in:
-                logger.warn('Could not login')
+                logger.warning('Could not login')
                 return False
             logger.debug('Logged in to AIoD')
         return True
+
+    def convert_all(self, platform_names: list[str] = []) -> None:
+        platforms = list()
+        if platform_names:
+            platforms = [self._platform_converters[p]
+                         for p in platform_names if p in self._platform_converters]
+        else:
+            platforms = self._platform_converters.values()
+
+        for p in platforms:
+            success = list()
+            failed = list()
+            assets = p.translate_all()
+            for asset, type in assets:
+                uploaded = self.upload(asset, type)
+                if not 'identifier' in uploaded:
+                    logger.warning(
+                        'Failed to upload asset %(asset_id)s',
+                        {
+                            'asset_id': asset[f'/{type}']['platform_resource_identifier'],
+                        }
+                    )
+                    failed.append(
+                        asset[f'/{type}']['platform_resource_identifier'])
+                else:
+                    logger.info(
+                        'Successfully uploaded asset %(asset_id)s with id %(asset_identifier)d',
+                        {
+                            'asset_id': asset[f'/{type}']['platform_resource_identifier'],
+                            'asset_identifier': uploaded['identifier']
+                        }
+                    )
+                    success.append(asset[f'/{type}']
+                                   ['platform_resource_identifier'])

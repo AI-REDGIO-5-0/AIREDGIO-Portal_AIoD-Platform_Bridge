@@ -10,7 +10,7 @@ class Queries:
                         "filter": [
                             {
                                 "term": {
-                                    "_index": "aiasset"
+                                    "_index": "service"
                                 }
                             },
                             {
@@ -33,7 +33,7 @@ class Queries:
                         "filter": [
                             {
                                 "term": {
-                                    "_index": "aiasset"
+                                    "_index": "service"
                                 }
                             },
                             {

@@ -1,5 +1,5 @@
 from collections import namedtuple
-import requests
+import httpx
 from keycloak import KeycloakOpenID
 import logging
 
@@ -9,7 +9,7 @@ Result = namedtuple('Result', ['success', 'value', 'reason'])
 
 
 class AIoD:
-    _session: requests.Session | None = None
+    _session: httpx.Client | None = None
     _headers = {
         'Content-Type': 'application/json',
     }
@@ -45,16 +45,16 @@ class AIoD:
         self._keycloak_client_secret_key = keycloak_client_secret_key
 
     @property
-    def session(self) -> requests.Session:
+    def session(self) -> httpx.Client:
         if not self._session:
-            self._session = requests.session()
-            self._session.headers.update(self._headers)
+            self._session = httpx.Client(headers=self._headers)
         return self._session
 
     @property
     def keycloak_configuration(self) -> KeycloakOpenID:
         # TODO: Maybe a property is not the best thing, need to handle possible errors
         if not self._keycloak_configuration:
+            # print(self._keycloak_server_url)
             self._keycloak_configuration = KeycloakOpenID(
                 server_url=self._keycloak_server_url,
                 client_id=self._keycloak_client_id,
@@ -68,7 +68,8 @@ class AIoD:
     def token(self) -> dict:
         if not self._token:
             logger.debug('Retrieving token from keycloak')
-            self._token = self.keycloak_configuration.token(grant_type='client_credentials')
+            self._token = self.keycloak_configuration.token(
+                grant_type='client_credentials')
         return self._token
 
     @property
@@ -109,19 +110,20 @@ class AIoD:
                             details.append(d)
         return details
 
-    def _handle_response(self, response: requests.Response) -> Result:
+    def _handle_response(self, response: httpx.Response) -> Result:
+        result = Result(False, None, None)
         try:
             response.raise_for_status()
             content = response.json()
             details = self._format_details(content)
             result = Result(
-                response.status_code == requests.codes.ok,
+                response.status_code == httpx.codes.OK,
                 content,
                 details
             )
-        except requests.Timeout:
+        except httpx.TimeoutException:
             result = Result(False, None, None)
-        except requests.HTTPError as http_error:
+        except httpx.HTTPStatusError as http_error:
             details = self._format_details(http_error.response.json())
             result = Result(
                 False,
@@ -150,6 +152,8 @@ class AIoD:
             )
             reasons = [result.reason] if isinstance(
                 result.reason, str) else result.reason
+            if not reasons:
+                reasons = []
             for reason in reasons:
                 logger.debug(
                     'Failed to %(method)s %(asset_type)s. Reason: %(reason)s',
